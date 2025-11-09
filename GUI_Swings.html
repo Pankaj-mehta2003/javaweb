@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java GUI_Swings - Core Java Programming</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* BODY — Dark Gradient Theme */
+        body {
+            background: linear-gradient(135deg, #1b0034, #2a0845, #1a1a2e);
+            color: #e4e4e4;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.4);
+        }
+
+            nav .logo {
+                font-size: 1.8em;
+                font-weight: bold;
+                color: #ffd166;
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 30px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: 500;
+                    transition: 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #ffd166;
+                    }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+            header h1 {
+                font-size: 2.8em;
+                color: #fff;
+                text-shadow: 0 0 10px #7f53ac;
+                margin-bottom: 10px;
+            }
+
+            header p {
+                font-size: 1.2em;
+                color: #cfcfcf;
+            }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 850px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+            .sidebar h3 {
+                text-align: center;
+                color: #ffd166;
+                margin-bottom: 15px;
+                font-size: 1.4em;
+            }
+
+            .sidebar ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                list-style: none;
+                gap: 15px;
+            }
+
+                .sidebar ul li a {
+                    background: rgba(255,255,255,0.1);
+                    color: #fff;
+                    padding: 10px 18px;
+                    border-radius: 8px;
+                    text-decoration: none;
+                    transition: 0.3s ease;
+                    border: 1px solid rgba(255,255,255,0.15);
+                }
+
+                    .sidebar ul li a:hover {
+                        background: #ffd166;
+                        color: #000;
+                        transform: scale(1.1);
+                        box-shadow: 0 0 15px #ffd166;
+                    }
+
+        /* MAIN CONTENT SECTION */
+        section {
+            background: rgba(255,255,255,0.05);
+            color: #f3f3f3;
+            padding: 40px 30px;
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            margin-top: 40px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffd166;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 0 0 8px #ffd166;
+        }
+
+        /* PROGRAM BOXES */
+        .program {
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+            margin-bottom: 25px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: transform 0.2s, box-shadow 0.3s;
+            border-left: 5px solid #ffd166;
+        }
+
+            .program:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0 20px #ffd16660;
+            }
+
+            .program h3 {
+                color: #ffd166;
+            }
+
+        pre {
+            background: #0e0e1a;
+            color: #00ffb3;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.95em;
+            margin-top: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .output {
+            background: #161b22;
+            padding: 12px 15px;
+            border-left: 5px solid #7f53ac;
+            margin-top: 10px;
+            border-radius: 6px;
+            color: #f4f4f4;
+        }
+
+        /* BUTTON STYLE */
+        a.btn {
+            background: #ffd166;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+            a.btn:hover {
+                background: #fff;
+                transform: scale(1.05);
+                box-shadow: 0 0 15px #ffd166;
+            }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9em;
+            color: #ccc;
+            background: rgba(255,255,255,0.05);
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">JavaPro</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html#topics">Topics</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Core Java Programming - GUI_Swings</h1>
+        <p>Practice and learn Java GUI_Swings programs with output and explanations</p>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <h3>GUI_Swings Menu</h3>
+        <ul id="menuList"></ul>
+    </div>
+
+    <!-- Program Section -->
+    <section id="programs">
+        <h2>Practice Problems</h2>
+        <!-- Programs will be added dynamically -->
+    </section>
+
+    <footer>
+        © 2025 JavaPro | Designed in Dark Neon Theme
+    </footer>
+
+    <script>
+        const programs = [
+            {
+                title: "Example 1 - Simple Swing Window",
+                code: `
+import javax.swing.*;
+class SimpleWindow {
+      public static void main(String args[]) {
+        JFrame f = new JFrame("Simple Example");
+        f.setSize(300, 200);
+        f.setVisible(true);
+      }
+}`,
+                output: "A simple Swing window appears."
+            },
+            {
+                title: "Example 2 - JButton Example",
+                code: `
+import javax.swing.*;
+public class ButtonExample {
+      public static void main(String[] args) {
+        JFrame f = new JFrame("Button Example");
+        JButton b = new JButton("Click Here");
+        b.setBounds(100, 100, 120, 40);
+        f.add(b);
+        f.setSize(300, 200);
+        f.setLayout(null);
+        f.setVisible(true);
+      }
+}`,
+                output: "Displays a window with a clickable button."
+            }
+        ];
+
+        // Dynamic content insertion
+        const section = document.getElementById("programs");
+        const menuList = document.getElementById("menuList");
+
+        programs.forEach((prog, i) => {
+            const div = document.createElement("div");
+            div.className = "program";
+            div.id = "prog" + (i + 1);
+            div.innerHTML = `
+        <h3>${prog.title}</h3>
+        <pre>${prog.code}</pre>
+        <div class="output"><strong>Output:</strong> ${prog.output}</div>`;
+            section.appendChild(div);
+
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="#prog${i + 1}">${prog.title}</a>`;
+            menuList.appendChild(li);
+        });
+    </script>
+
+</body>
+</html>

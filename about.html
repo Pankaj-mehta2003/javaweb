@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - JavaPro</title>
+    <style>
+        /* 🔹 RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top left, #0a0a0f, #12121a, #1b1b25);
+            color: #eaeaea;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-size: 400% 400%;
+            animation: bgFlow 12s ease infinite;
+        }
+
+        /* 🎨 Animated Background Flow */
+        @keyframes bgFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 🔸 NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 50px;
+            background: rgba(25, 25, 35, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+            nav .logo {
+                font-size: 1.8em;
+                font-weight: bold;
+                color: #00e5ff;
+                text-shadow: 0 0 10px #00e5ff;
+                letter-spacing: 1px;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 30px;
+            }
+
+                nav ul li a {
+                    color: #ddd;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: 0.3s ease;
+                    position: relative;
+                }
+
+                    nav ul li a::after {
+                        content: "";
+                        position: absolute;
+                        bottom: -4px;
+                        left: 0;
+                        width: 0%;
+                        height: 2px;
+                        background: linear-gradient(90deg, #00e5ff, #ff00e0);
+                        transition: width 0.3s ease;
+                    }
+
+                    nav ul li a:hover {
+                        color: #fff;
+                    }
+
+                        nav ul li a:hover::after {
+                            width: 100%;
+                        }
+
+        /* 🧠 ABOUT CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: 80px auto;
+            background: rgba(30, 30, 40, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+            .container.visible {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+        h1 {
+            text-align: center;
+            font-size: 2.6em;
+            background: linear-gradient(90deg, #00e5ff, #ff00e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        /* 💫 Info Card */
+        .info-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            margin-bottom: 40px;
+        }
+
+            .info-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 12px 25px rgba(0, 255, 255, 0.4);
+            }
+
+            .info-card p {
+                font-size: 1.1em;
+                margin: 10px 0;
+                color: #ccc;
+            }
+
+        .highlight {
+            color: #00e5ff;
+            font-weight: 600;
+        }
+
+        /* ☕ JAVA FACTS SECTION */
+        h2 {
+            text-align: center;
+            margin: 35px 0 15px;
+            color: #fff;
+            font-size: 1.8em;
+            text-shadow: 0 0 10px rgba(255, 0, 224, 0.5);
+        }
+
+        ul {
+            padding-left: 45px;
+            list-style-type: "☕ ";
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #d8d8d8;
+        }
+
+            ul li strong {
+                color: #ff00e0;
+            }
+
+        /* 👣 FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #ccc;
+            font-size: 0.9em;
+            background: rgba(15, 15, 20, 0.7);
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+            footer span {
+                color: #00e5ff;
+            }
+
+        /* 🌟 FLOATING ANIMATION */
+        @keyframes floaty {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .float {
+            animation: floaty 4s ease-in-out infinite;
+        }
+
+        /* 🔘 SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00e5ff, #ff00e0);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .container {
+                margin: 50px 20px;
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 2.1em;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- 🌟 Navbar -->
+<nav>
+ 
+  <ul>
+    <li style="align-content: center;"><a href="index.html">Home</a></li>
+  </ul>
+</nav>
+
+<!-- ✨ About Section -->
+<div class="container" id="aboutBox">
+  <h1>About Developer</h1>
+  
+
+  <div class="info-card float">
+    <p><span class="highlight">Name:</span> Pankaj Mehta</p>
+    <p><span class="highlight">Class:</span> BCA 5th Semester</p>
+    <p><span class="highlight">Roll No:</span> 4096</p>
+    <p><span class="highlight">Mentor:</span> Mr. Chetan Gupta</p>
+  </div>
+
+  <h2>About Java</h2>
+  <ul>
+    <li>Java is a <strong>platform-independent</strong> programming language.</li>
+    <li>It follows <strong>“Write Once, Run Anywhere.”</strong></li>
+    <li>Used for <strong>web, mobile, and enterprise</strong> applications.</li>
+    <li>It supports <strong>OOPs, multithreading,</strong> and <strong>exception handling.</strong></li>
+    <li>Frameworks like <strong>Spring</strong> and <strong>Hibernate</strong> make Java enterprise-ready.</li>
+  </ul>
+</div>
+
+<!-- 👣 Footer -->
+
+
+<script>
+// ⌨️ Typing Effect
+
+let i=0;
+function typing(){
+  if(i<text.length){
+    typingText.textContent+=text.charAt(i);
+    i++;
+    setTimeout(typing,70);
+  }
+}
+window.onload=typing;
+
+// 🎬 Fade in when page loads
+window.addEventListener("load",()=>{
+  document.getElementById("aboutBox").classList.add("visible");
+});
+</script>
+</body>
+</html>

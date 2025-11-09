@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Programming - College Project</title>
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", "Segoe UI", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at top left, #0a0a0f, #12121a, #1b1b25);
+            color: #e6e6e6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 60px;
+            background: rgba(30, 30, 40, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+            nav .logo {
+                font-size: 1.8em;
+                font-weight: bold;
+                color: #00e5ff;
+                letter-spacing: 1px;
+                text-shadow: 0 0 10px #00e5ff;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 35px;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #d1d1d1;
+                    font-weight: 500;
+                    transition: 0.3s ease;
+                    position: relative;
+                }
+
+                    nav ul li a::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: -4px;
+                        width: 0%;
+                        height: 2px;
+                        background: linear-gradient(90deg, #00e5ff, #ff00e0);
+                        transition: width 0.3s ease;
+                    }
+
+                    nav ul li a:hover {
+                        color: #ffffff;
+                    }
+
+                        nav ul li a:hover::after {
+                            width: 100%;
+                        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px;
+            background: transparent;
+            animation: fadeIn 1.5s ease;
+        }
+
+            .hero h1 {
+                font-size: 3.2em;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #ffffff;
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+            }
+
+            .hero h2 {
+                color: #b4b4ff;
+                font-weight: 400;
+                letter-spacing: 0.5px;
+            }
+
+            .hero p {
+                font-size: 1.15em;
+                margin: 30px auto;
+                max-width: 700px;
+                color: #cccccc;
+                line-height: 1.6;
+            }
+
+            .hero .btn {
+                background: linear-gradient(90deg, #00e5ff, #ff00e0);
+                color: #000;
+                padding: 14px 35px;
+                border-radius: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                box-shadow: 0 0 20px rgba(255, 0, 224, 0.4);
+                transition: 0.4s ease;
+            }
+
+                .hero .btn:hover {
+                    transform: scale(1.08);
+                    box-shadow: 0 0 30px rgba(255, 0, 224, 0.7);
+                }
+
+        /* TOPICS SECTION */
+        .topics-section {
+            background: rgba(30, 30, 40, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 80px 20px;
+            border-top-left-radius: 70px;
+            border-top-right-radius: 70px;
+            margin-top: 60px;
+            box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+            .topics-section h2 {
+                text-align: center;
+                margin-bottom: 55px;
+                font-size: 2.3em;
+                background: linear-gradient(90deg, #00e5ff, #ff00e0);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            }
+
+        .topics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
+        }
+
+        .topic-btn {
+            background: linear-gradient(135deg, #00e5ff, #ff00e0);
+            color: #000;
+            border: none;
+            padding: 15px 28px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 5px 18px rgba(255, 0, 224, 0.4);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+            .topic-btn:hover {
+                transform: translateY(-6px) scale(1.05);
+                box-shadow: 0 12px 30px rgba(255, 0, 224, 0.8);
+            }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00e5ff, #ff00e0);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.3em;
+            }
+
+            .topics-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#topics">Programs</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>The Power of Java Programming</h1>
+        <h2>Pankaj Mehta- 4096/23</h2>
+        <h2>Mentor: MR. Chetan Gupta</h2>
+        <p>Build, innovate, and explore with the language that powers the digital world.</p>
+        <a href="#topics" class="btn">Explore Topics</a>
+    </section>
+
+    <!-- Topics Section -->
+    <!-- Topics Section -->
+    <section class="topics-section" id="topics">
+        <h2>Core Java Programming - Topics</h2>
+        <div class="topics-container" id="topicsContainer">
+            <!-- Buttons will be dynamically added here -->
+        </div>
+    </section>
+
+    <script>
+        // Java topics array
+        const topics = [
+           "BASIC PROGRAMMING CONSTRUCTS", "DATA CONVERSION",
+            "DELEGATION EVENT MODEL", "EXCEPTION HANDLING", "FUNCTIONS",
+            "GRAPHICAL USER INTERFACE (AWT)", "GRAPHICAL USER INTERFACE (SWINGS)",
+            "INHERITANCE", "INPUT/OUTPUT", "INTERFACES", "JAVA DATABASE CONNECTIVITY",
+            "MULTI-DIMENSION ARRAYS", "MULTITHREADING", "OBJECT ORIENTED PROGRAMMING",
+            "PACKAGES", "SINGLE DIMENSION ARRAYS", "STRINGS"
+        ];
+
+        const container = document.getElementById("topicsContainer");
+
+        topics.forEach((topic, i) => {
+            const btn = document.createElement("button");
+            btn.className = "topic-btn";
+            btn.textContent = topic;
+
+            // ✅ Make APPLETS button redirect to applets.html
+           
+            if (topic === "BASIC PROGRAMMING CONSTRUCTS") {
+                btn.onclick = () => window.location.href = "BasicProgrammingConstructs.html";
+            }
+            else if (topic === "DATA CONVERSION") {
+                btn.onclick = () => window.location.href = "DataConversion.html";
+            }
+            else if (topic === "DELEGATION EVENT MODEL") {
+                btn.onclick = () => window.location.href = "DelegationEventModel.html";
+            }
+            else if (topic === "EXCEPTION HANDLING") {
+                btn.onclick = () => window.location.href = "ExceptionHandling.html";
+            }
+            else if (topic === "FUNCTIONS") {
+                btn.onclick = () => window.location.href = "Functions.html";
+            }
+            else if (topic === "GRAPHICAL USER INTERFACE (AWT)") {
+                btn.onclick = () => window.location.href = "GUI_AWT.html";
+            }
+            else if (topic === "GRAPHICAL USER INTERFACE (SWINGS)") {
+                btn.onclick = () => window.location.href = "GUI_Swings.html";
+            }
+            else if (topic === "INHERITANCE") {
+                btn.onclick = () => window.location.href = "Inheritance.html";
+            }
+            else if (topic === "INPUT/OUTPUT") {
+                btn.onclick = () => window.location.href = "InputOutput.html";
+            }
+            else if (topic === "INTERFACES") {
+                btn.onclick = () => window.location.href = "Interfaces.html";
+            }
+            else if (topic === "JAVA DATABASE CONNECTIVITY") {
+                btn.onclick = () => window.location.href = "JavaDatabaseConnectivity.html";
+            }
+            else if (topic === "MULTI-DIMENSION ARRAYS") {
+                btn.onclick = () => window.location.href = "MultiDimensionArrays.html";
+            }
+            else if (topic === "MULTITHREADING") {
+                btn.onclick = () => window.location.href = "Multithreading.html";
+            }
+            else if (topic === "OBJECT ORIENTED PROGRAMMING") {
+                btn.onclick = () => window.location.href = "ObjectOrientedProgramming.html";
+            }
+            else if (topic === "PACKAGES") {
+                btn.onclick = () => window.location.href = "Packages.html";
+            }
+            else if (topic === "SINGLE DIMENSION ARRAYS") {
+                btn.onclick = () => window.location.href = "SingleDimensionArrays.html";
+            }
+            else if (topic === "STRINGS") {
+                btn.onclick = () => window.location.href = "Strings.html";
+            }
+
+            btn.style.animationDelay = `${i * 0.1}s`;
+            container.appendChild(btn);
+        });
+
+    </script>
+</body>
+</html>
+
